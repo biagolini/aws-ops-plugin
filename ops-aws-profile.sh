@@ -36,6 +36,18 @@ set_aws_profile() {
         echo "AWS Profile unset successfully."
         return
     fi
+
+    # Change the default AWS config file
+    if [ "$term1" = "config" ] && [ -n "$term2" ]; then
+        config_path="$HOME/.aws/$term2"
+        if [ -f "$config_path" ]; then
+            export AWS_CONFIG_FILE="$config_path"
+            echo "AWS Config file changed to: $AWS_CONFIG_FILE"
+        else
+            echo "Error: Configuration file '$term2' not found in ~/.aws/"
+        fi
+        return
+    fi
     
     # Check if the profile exists in the AWS config file
     if ! grep -q "\[profile $term1\]" ~/.aws/config; then
@@ -58,3 +70,4 @@ aws_with_profile() {
     fi
 }
 alias aws=aws_with_profile
+

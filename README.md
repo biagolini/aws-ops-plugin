@@ -31,33 +31,43 @@ The `aws-ops-plugin` offers a seamless and efficient way to manage your AWS prof
 
 ## Installation
 
-1. First, ensure your packages are up-to-date:
-
-```bash
-sudo apt update
-```
-
-2. Clone this repository:
+1. Clone this repository:
 
 ```bash
 git clone https://github.com/biagolini/aws-ops-plugin  ~/.aws-ops-plugin
 ```
 
-3. Grant execution permissions to the installation script:
+2. Grant execution permissions to the installation script:
+
+For Ubuntu:
 
 ```bash
-chmod +x ~/.aws-ops-plugin/install.sh
+chmod +x ~/.aws-ops-plugin/install_ubuntu.sh
 ```
 
-4. Run the installation script:
+For macOS:
 
 ```bash
-~/.aws-ops-plugin/install.sh
+chmod +x ~/.aws-ops-plugin/install_mac.sh
+```
+
+3. Run the installation script:
+
+For Ubuntu:
+
+```bash
+~/.aws-ops-plugin/install_ubuntu.sh
+```
+
+For macOS:
+
+```bash
+~/.aws-ops-plugin/install_mac.sh
 ```
 
 Follow the prompts to choose where you'd like to source the plugin from (e.g., ~/.bashrc or ~/.zshrc).
 
-5. Important: Restart your terminal for the changes to take effect or manually run
+4. Important: Restart your terminal for the changes to take effect or manually run
 
 ```bash
 source /usr/bin/ops-aws-profile
@@ -108,6 +118,21 @@ For instance, if you have a sso-session named "SampleSession", you would use:
 ```bash
 ops login SampleSession
 ```
+
+### Configuring AWS Config File
+
+To switch the AWS configuration file dynamically:
+
+```bash
+ops config <CONFIG_FILE_NAME>
+```
+
+For example, to use a specific configuration file named “config2”, execute:
+
+```bash
+ops config config2
+```
+
 
 ### Unsetting the Current AWS Profile
 
